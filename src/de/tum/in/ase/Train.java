@@ -16,7 +16,7 @@ public class Train {
      */
     public Train() {
         setFailingChance(0);
-        history = new ArrayList<Boolean>();
+        history = new ArrayList<>();
     }
 
     /**

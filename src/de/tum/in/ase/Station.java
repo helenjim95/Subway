@@ -1,5 +1,6 @@
 package de.tum.in.ase;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Station {
@@ -7,9 +8,25 @@ public class Station {
      * This class represents the train stations that make up the connection from Garching to Grosshadern.
      */
 
-    // TODO Add private attributes as seen in the UML diagram on Artemis.
+    // Done: Add private attributes as seen in the UML diagram on Artemis.
+    private String name;
+    private List<Train> toGarching;
+    private List<Train> toGrosshadern;
     //  Remember to add getters and setters for all of them.
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
 
+    public void setToGarching(List<Train> toGarching) {
+        this.toGarching = toGarching;
+    }
+
+    public void setToGrosshadern(List<Train> toGrosshadern) {
+        this.toGrosshadern = toGrosshadern;
+    }
 
     // TODO use these two constants to check if current station is a terminal station in dispatch methods
     private static final String TERMINAL_STATION1 = "Garching-Forschungszentrum";
@@ -23,16 +40,43 @@ public class Station {
      * @param nextDirectionGrosshadern The next station when driving in the direction of Klinikum Grosshadern
      */
     public Station(String name, Station nextDirectionGarching, Station nextDirectionGrosshadern) {
-        // TODO Initialize your attributes. Don't forget to initialize the waiting lists.
+        // Done: Initialize your attributes. Don't forget to initialize the waiting lists.
+        this.name = name;
+        if (nextDirectionGarching.equals(TERMINAL_STATION1)) {
+            this.toGarching = new ArrayList<>();
+        } else if (nextDirectionGrosshadern.equals(TERMINAL_STATION2)) {
+            this.toGrosshadern = new ArrayList<>();
+        }
     }
+    public void setNextStationToGrosshadern(Station nextStationToGrosshadern) {
+        // Done: Implement this setter.
+        this.name = TERMINAL_STATION2;
+    }
+
+    public void setNextStationToGarching(Station nextStationToGarching) {
+        // Done: Implement this setter.
+        this.name = TERMINAL_STATION1;
+    }
+
+
+    public List<Train> getToGrosshadern() {
+        // Done: Implement this getter.
+        return toGrosshadern;
+    }
+
+    public List<Train> getToGarching() {
+        // Done: Implement this setter.
+        return toGarching;
+    }
+
 
     /**
      * This method adds a train to the waiting list in direction Grosshadern
      * @param train The train to be added
      */
     public void addTrainToGrosshadern(Train train) {
-        // TODO Implement this method. The method description above tells you what the method should do.
-
+        // Done: Implement this method. The method description above tells you what the method should do.
+        toGrosshadern.add(train);
     }
 
     /**
@@ -40,8 +84,8 @@ public class Station {
      * @param train The train to be added
      */
     public void addTrainToGarching(Train train) {
-        // TODO Implement this method. The method description above tells you what the method should do.
-
+        // Done: Implement this method. The method description above tells you what the method should do.
+        toGarching.add(train);
     }
 
     /**
@@ -49,9 +93,17 @@ public class Station {
      * to the next station on the way to Garching.
      */
     public void dispatchTrainsToGarching() {
-        // TODO Implement this method. It dispatched one train in direction Garching.
+        // Done: Implement this method. It dispatched one train in direction Garching.
         //  Remember that there might be no train waiting to be dispatched and that terminal station behave different.
         //  The train can only be dispatched if it is working, make sure to check for that by calling drive()
+//        Check if waiting list is not empty
+        if (!toGarching.isEmpty()) {
+            Train train = toGarching.get(0);
+            boolean isWorking = train.drive();
+            if (isWorking) {
+                removeTrainToGarching();
+            }
+        }
     }
 
     /**
@@ -59,9 +111,16 @@ public class Station {
      * to the next station on the way to Grosshadern.
      */
     public void dispatchTrainsToGrosshadern() {
-        // TODO Implement this method. It dispatched one train in direction Grosshadern.
+        // Done: Implement this method. It dispatched one train in direction Grosshadern.
         //  Remember that there might be no train waiting to be dispatched and that terminal station behave different.
         //  The train can only be dispatched if it is working, make sure to check for that by calling drive()
+        if (!toGrosshadern.isEmpty()) {
+            Train train = toGrosshadern.get(0);
+            boolean isWorking = train.drive();
+            if (isWorking) {
+                removeTrainToGrosshadern();
+            }
+        }
     }
 
     /**
@@ -69,8 +128,12 @@ public class Station {
      * @return null if no train in direction Grosshadern is currently waiting and the train otherwise
      */
     public Train removeTrainToGrosshadern() {
-        // TODO Implement this method. The method description above tells you what the method should do.
-        return null;
+        // Done: Implement this method. The method description above tells you what the method should do.
+        if (toGrosshadern.isEmpty()) {
+            return null;
+        } else {
+            return toGrosshadern.remove(0);
+        }
     }
 
     /**
@@ -78,8 +141,12 @@ public class Station {
      * @return null if no train in direction Garching is currently waiting and the train otherwise
      */
     public Train removeTrainToGarching() {
-        // TODO Implement this method. The method description above tells you what the method should do.
-        return null;
+        // Done: Implement this method. The method description above tells you what the method should do.
+        if (toGarching.isEmpty()) {
+            return null;
+        } else {
+            return toGarching.remove(0);
+        }
     }
 
     /**
@@ -88,7 +155,7 @@ public class Station {
      */
     public int getLengthOfWaitingListToGarching() {
         // TODO Implement this method. The method description above tells you what the method should do.
-        return 0;
+        return toGarching.size();
     }
 
     /**
@@ -97,22 +164,7 @@ public class Station {
      */
     public int getLengthOfWaitingListToGrosshadern() {
         // TODO Implement this method. The method description above tells you what the method should do.
-        return 0;
+        return toGrosshadern.size();
     }
 
-    public void setNextStationToGrosshadern(Station nextStationToGrosshadern) {
-        // TODO Implement this setter.
-    }
-
-    public List<Train> getToGrosshadern() {
-        // TODO Implement this getter.
-        return null;
-    }
-
-    public List<Train> getToGarching() {
-        // TODO Implement this setter.
-        return null;
-    }
-
-    // TODO Implement the remaining getters and setters for all attributes
 }

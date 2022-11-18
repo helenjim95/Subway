@@ -1,5 +1,6 @@
 package de.tum.in.ase;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Depot {
@@ -7,14 +8,16 @@ public class Depot {
      * This class represents the depot that is used to store trains that are currently not in use.
      */
 
-    // TODO Add the attribute trains as seen in the UML diagram
+    // Done: Add the attribute trains as seen in the UML diagram
+    List<Train> trains;
 
     /**
      * This constructor creates an empty depot.
      */
-    public Depot() {
-        // TODO Initialize the variable trains with an empty list
 
+    public Depot() {
+        // Done: Initialize the variable trains with an empty list
+        this.trains = new ArrayList<>();
     }
 
     /**
@@ -22,8 +25,8 @@ public class Depot {
      * @param trains The trains that are already in the depot.
      */
     public Depot(List<Train> trains) {
-        // TODO Initialize the variable trains with the given list
-
+        // Done: Initialize the variable trains with the given list
+        this.trains = trains;
     }
 
     /**
@@ -31,8 +34,8 @@ public class Depot {
      * @return True if there are no trains in the depot.
      */
     public boolean isEmpty() {
-        // TODO Implement this method. The method description above tells you what the method should do.
-        return true;
+        // Done: Implement this method. The method description above tells you what the method should do.
+        return trains.size() == 0;
     }
 
     /**
@@ -40,8 +43,8 @@ public class Depot {
      * @return The number of trains in the depot
      */
     public int numberOfTrains() {
-        // TODO Implement this method. The method description above tells you what the method should do.
-        return 0;
+        // Done: Implement this method. The method description above tells you what the method should do.
+        return trains.size();
     }
 
     /**
@@ -49,8 +52,8 @@ public class Depot {
      * @return The last train added
      */
     public Train getNextTrain() {
-        // TODO Implement this method. The method description above tells you what the method should do.
-        return null;
+        // Done: Implement this method. The method description above tells you what the method should do.
+        return trains.remove(trains.size() - 1);
     }
 
     /**
@@ -58,7 +61,7 @@ public class Depot {
      * @param The train that will be added to the depot
      */
     public void addTrain(Train train) {
-        // TODO Implement this method. The method description above tells you what the method should do.
-
+        // Done: Implement this method. The method description above tells you what the method should do.
+        trains.add(train);
     }
 }
