@@ -3,6 +3,7 @@ package de.tum.in.ase;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("JavadocReference")
 public class Depot {
     /**
      * This class represents the depot that is used to store trains that are currently not in use.

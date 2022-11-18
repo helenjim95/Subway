@@ -16,6 +16,27 @@ public class Station {
     private Station nextStationToGarching;
     private Station nextStationToGrosshadern;
     //  Remember to add getters and setters for all of them.
+
+    // TODO use these two constants to check if current station is a terminal station in dispatch methods
+    private static final String TERMINAL_STATION1 = "Garching-Forschungszentrum";
+    private static final String TERMINAL_STATION2 = "Klinikum Grosshadern";
+
+    /**
+     * This constructor sets up a new Station.
+     *
+     * @param name                     The name of the Station, e.g. "Garching Forschungszentrum"
+     * @param nextDirectionGarching    The next station when driving in the direction of Garching Forschungszentrum
+     * @param nextDirectionGrosshadern The next station when driving in the direction of Klinikum Grosshadern
+     */
+    public Station(String name, Station nextDirectionGarching, Station nextDirectionGrosshadern) {
+        // Done: Initialize your attributes. Don't forget to initialize the waiting lists.
+        this.name = name;
+        this.nextStationToGrosshadern = nextDirectionGrosshadern;
+        this.nextStationToGarching = nextDirectionGarching;
+        this.toGarching = new ArrayList<>();
+        this.toGrosshadern = new ArrayList<>();
+    }
+
     public String getName() {
         return name;
     }
@@ -39,27 +60,6 @@ public class Station {
         return nextStationToGrosshadern;
     }
 
-    // TODO use these two constants to check if current station is a terminal station in dispatch methods
-    private static final String TERMINAL_STATION1 = "Garching-Forschungszentrum";
-    private static final String TERMINAL_STATION2 = "Klinikum Grosshadern";
-
-    /**
-     * This constructor sets up a new Station.
-     *
-     * @param name                     The name of the Station, e.g. "Garching Forschungszentrum"
-     * @param nextDirectionGarching    The next station when driving in the direction of Garching Forschungszentrum
-     * @param nextDirectionGrosshadern The next station when driving in the direction of Klinikum Grosshadern
-     */
-    public Station(String name, Station nextDirectionGarching, Station nextDirectionGrosshadern) {
-        // Done: Initialize your attributes. Don't forget to initialize the waiting lists.
-        this.name = name;
-        if (nextDirectionGarching != null && nextDirectionGarching.equals(TERMINAL_STATION1)) {
-            this.toGarching = new ArrayList<>();
-        }
-        if (nextDirectionGrosshadern != null && nextDirectionGrosshadern.equals(TERMINAL_STATION2)) {
-            this.toGrosshadern = new ArrayList<>();
-        }
-    }
     public void setNextStationToGrosshadern(Station nextStationToGrosshadern) {
         // Done: Implement this setter.
         this.name = TERMINAL_STATION2;
