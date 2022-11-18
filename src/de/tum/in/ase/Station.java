@@ -110,7 +110,7 @@ public class Station {
             boolean isWorking = train.drive();
             if (isWorking) {
                 toGarching.remove(train);
-                if (name.equals(TERMINAL_STATION1)) {
+                if (!name.equals(TERMINAL_STATION1)) {
 //                    add the train to the next train station in the other direction
                     nextStationToGarching.toGarching.add(train);
                 } else {
@@ -135,9 +135,8 @@ public class Station {
             boolean isWorking = train.drive();
             if (isWorking) {
                 toGrosshadern.remove(train);
-                if (name.equals(TERMINAL_STATION2)) {
+                if (!name.equals(TERMINAL_STATION2)) {
 //                    add the train to the next train station in the other direction
-
                     nextStationToGrosshadern.toGrosshadern.add(train);
                 } else {
 //                    add the train to the next train station in the same direction
