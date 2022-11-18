@@ -134,7 +134,7 @@ public class Station {
             Train train = toGrosshadern.get(0);
             boolean isWorking = train.drive();
             if (isWorking) {
-                removeTrainToGarching();
+                removeTrainToGrosshadern();
             }
             if (name.equals(TERMINAL_STATION2)) {
                 addTrainToGarching(train);
