@@ -9,7 +9,7 @@ public class Depot {
      */
 
     // Done: Add the attribute trains as seen in the UML diagram
-    List<Train> trains;
+    private List<Train> trains;
 
     /**
      * This constructor creates an empty depot.
@@ -26,6 +26,14 @@ public class Depot {
      */
     public Depot(List<Train> trains) {
         // Done: Initialize the variable trains with the given list
+        this.trains = trains;
+    }
+
+    public List<Train> getTrains() {
+        return trains;
+    }
+
+    public void setTrains(List<Train> trains) {
         this.trains = trains;
     }
 

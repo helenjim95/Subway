@@ -42,9 +42,10 @@ public class Station {
     public Station(String name, Station nextDirectionGarching, Station nextDirectionGrosshadern) {
         // Done: Initialize your attributes. Don't forget to initialize the waiting lists.
         this.name = name;
-        if (nextDirectionGarching.equals(TERMINAL_STATION1)) {
+        if (nextDirectionGarching != null && nextDirectionGarching.equals(TERMINAL_STATION1)) {
             this.toGarching = new ArrayList<>();
-        } else if (nextDirectionGrosshadern.equals(TERMINAL_STATION2)) {
+        }
+        if (nextDirectionGrosshadern != null && nextDirectionGrosshadern.equals(TERMINAL_STATION2)) {
             this.toGrosshadern = new ArrayList<>();
         }
     }
