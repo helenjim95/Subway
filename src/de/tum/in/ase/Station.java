@@ -113,9 +113,9 @@ public class Station {
             boolean isWorking = train.drive();
             if (isWorking) {
                 removeTrainToGarching();
-            }
-            if (name.equals(TERMINAL_STATION1)) {
-                addTrainToGrosshadern(train);
+                if (name.equals(TERMINAL_STATION1)) {
+                    addTrainToGrosshadern(train);
+                }
             }
         }
     }
@@ -133,10 +133,10 @@ public class Station {
             boolean isWorking = train.drive();
             if (isWorking) {
                 removeTrainToGrosshadern();
+                if (name.equals(TERMINAL_STATION2)) {
+                    addTrainToGarching(train);
+                }
             }
-            if (name.equals(TERMINAL_STATION2)) {
-                addTrainToGarching(train);
-            } 
         }
     }
 
