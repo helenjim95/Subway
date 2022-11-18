@@ -12,6 +12,9 @@ public class Station {
     private String name;
     private List<Train> toGarching;
     private List<Train> toGrosshadern;
+
+    private Station nextStationToGarching;
+    private Station nextStationToGrosshadern;
     //  Remember to add getters and setters for all of them.
     public String getName() {
         return name;
@@ -26,6 +29,14 @@ public class Station {
 
     public void setToGrosshadern(List<Train> toGrosshadern) {
         this.toGrosshadern = toGrosshadern;
+    }
+
+    public Station getNextStationToGarching() {
+        return nextStationToGarching;
+    }
+
+    public Station getNextStationToGrosshadern() {
+        return nextStationToGrosshadern;
     }
 
     // TODO use these two constants to check if current station is a terminal station in dispatch methods
