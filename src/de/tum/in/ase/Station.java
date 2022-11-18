@@ -60,16 +60,14 @@ public class Station {
         return nextStationToGrosshadern;
     }
 
-    public void setNextStationToGrosshadern(Station nextStationToGrosshadern) {
-        // Done: Implement this setter.
-        this.name = TERMINAL_STATION2;
-    }
-
     public void setNextStationToGarching(Station nextStationToGarching) {
         // Done: Implement this setter.
         this.name = TERMINAL_STATION1;
     }
-
+    public void setNextStationToGrosshadern(Station nextStationToGrosshadern) {
+        // Done: Implement this setter.
+        this.name = TERMINAL_STATION2;
+    }
 
     public List<Train> getToGrosshadern() {
         // Done: Implement this getter.
@@ -80,7 +78,6 @@ public class Station {
         // Done: Implement this setter.
         return toGarching;
     }
-
 
     /**
      * This method adds a train to the waiting list in direction Grosshadern
@@ -114,9 +111,15 @@ public class Station {
             if (isWorking) {
                 removeTrainToGarching();
                 if (name.equals(TERMINAL_STATION1)) {
+//                    add the train to the next train station in the other direction
                     addTrainToGrosshadern(train);
+                    setNextStationToGrosshadern(nextStationToGrosshadern);
+                } else {
+//                    add the train to the next train station in the same direction
+                    setNextStationToGarching(nextStationToGarching);
                 }
             }
+
         }
     }
 
@@ -135,6 +138,11 @@ public class Station {
                 removeTrainToGrosshadern();
                 if (name.equals(TERMINAL_STATION2)) {
                     addTrainToGarching(train);
+                    setNextStationToGarching(nextStationToGarching);
+//                    add the train to the next train station in the other direction
+                } else {
+//                    add the train to the next train station in the same direction
+                    setNextStationToGrosshadern(nextStationToGrosshadern);
                 }
             }
         }
