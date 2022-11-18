@@ -116,6 +116,7 @@ public class Station {
                     setNextStationToGrosshadern(nextStationToGrosshadern);
                 } else {
 //                    add the train to the next train station in the same direction
+                    addTrainToGarching(train);
                     setNextStationToGarching(nextStationToGarching);
                 }
             }
@@ -141,6 +142,7 @@ public class Station {
                     setNextStationToGarching(nextStationToGarching);
 //                    add the train to the next train station in the other direction
                 } else {
+                    addTrainToGrosshadern(train);
 //                    add the train to the next train station in the same direction
                     setNextStationToGrosshadern(nextStationToGrosshadern);
                 }
