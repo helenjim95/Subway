@@ -116,8 +116,6 @@ public class Station {
             }
             if (name.equals(TERMINAL_STATION1)) {
                 addTrainToGrosshadern(train);
-            } else {
-                addTrainToGarching(train);
             }
         }
     }
@@ -138,9 +136,7 @@ public class Station {
             }
             if (name.equals(TERMINAL_STATION2)) {
                 addTrainToGarching(train);
-            } else {
-                addTrainToGrosshadern(train);
-            }
+            } 
         }
     }
 
