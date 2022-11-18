@@ -62,7 +62,10 @@ public class Depot {
      */
     public Train getNextTrain() {
         // Done: Implement this method. The method description above tells you what the method should do.
-        return trains.remove(trains.size() - 1);
+        if (trains.size() > 0) {
+            return trains.remove(trains.size() - 1);
+        }
+        return null;
     }
 
     /**

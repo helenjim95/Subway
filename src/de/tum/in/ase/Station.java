@@ -109,15 +109,13 @@ public class Station {
             Train train = toGarching.get(0);
             boolean isWorking = train.drive();
             if (isWorking) {
-                removeTrainToGarching();
+                toGarching.remove(train);
                 if (name.equals(TERMINAL_STATION1)) {
 //                    add the train to the next train station in the other direction
-                    addTrainToGrosshadern(train);
-                    setNextStationToGrosshadern(nextStationToGrosshadern);
+                    nextStationToGarching.toGarching.add(train);
                 } else {
 //                    add the train to the next train station in the same direction
-                    addTrainToGarching(train);
-                    setNextStationToGarching(nextStationToGarching);
+                    nextStationToGrosshadern.toGrosshadern.add(train);
                 }
             }
 
@@ -136,15 +134,14 @@ public class Station {
             Train train = toGrosshadern.get(0);
             boolean isWorking = train.drive();
             if (isWorking) {
-                removeTrainToGrosshadern();
+                toGrosshadern.remove(train);
                 if (name.equals(TERMINAL_STATION2)) {
-                    addTrainToGarching(train);
-                    setNextStationToGarching(nextStationToGarching);
 //                    add the train to the next train station in the other direction
+
+                    nextStationToGrosshadern.toGrosshadern.add(train);
                 } else {
-                    addTrainToGrosshadern(train);
 //                    add the train to the next train station in the same direction
-                    setNextStationToGrosshadern(nextStationToGrosshadern);
+                    nextStationToGarching.toGarching.add(train);
                 }
             }
         }
