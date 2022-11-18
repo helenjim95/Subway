@@ -108,12 +108,16 @@ public class Station {
         // Done: Implement this method. It dispatched one train in direction Garching.
         //  Remember that there might be no train waiting to be dispatched and that terminal station behave different.
         //  The train can only be dispatched if it is working, make sure to check for that by calling drive()
-//        Check if waiting list is not empty
         if (!toGarching.isEmpty()) {
             Train train = toGarching.get(0);
             boolean isWorking = train.drive();
             if (isWorking) {
                 removeTrainToGarching();
+            }
+            if (name.equals(TERMINAL_STATION1)) {
+                addTrainToGrosshadern(train);
+            } else {
+                addTrainToGarching(train);
             }
         }
     }
@@ -130,7 +134,12 @@ public class Station {
             Train train = toGrosshadern.get(0);
             boolean isWorking = train.drive();
             if (isWorking) {
-                removeTrainToGrosshadern();
+                removeTrainToGarching();
+            }
+            if (name.equals(TERMINAL_STATION2)) {
+                addTrainToGarching(train);
+            } else {
+                addTrainToGrosshadern(train);
             }
         }
     }
