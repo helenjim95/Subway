@@ -62,11 +62,11 @@ public class Station {
 
     public void setNextStationToGarching(Station nextStationToGarching) {
         // Done: Implement this setter.
-        this.name = TERMINAL_STATION1;
+        this.nextStationToGarching = nextStationToGarching;
     }
     public void setNextStationToGrosshadern(Station nextStationToGrosshadern) {
         // Done: Implement this setter.
-        this.name = TERMINAL_STATION2;
+        this.nextStationToGrosshadern = nextStationToGrosshadern;
     }
 
     public List<Train> getToGrosshadern() {
@@ -105,12 +105,12 @@ public class Station {
         // Done: Implement this method. It dispatched one train in direction Garching.
         //  Remember that there might be no train waiting to be dispatched and that terminal station behave different.
         //  The train can only be dispatched if it is working, make sure to check for that by calling drive()
-        if (toGarching.size() > 0) {
-            Train train = toGarching.get(0);
+        if (this.toGarching.size() > 0) {
+            Train train = this.toGarching.get(0);
             boolean isWorking = train.drive();
             if (isWorking) {
-                toGarching.remove(train);
-                if (!name.equals(TERMINAL_STATION1)) {
+                this.toGarching.remove(train);
+                if (!this.name.equals(TERMINAL_STATION1)) {
 //                    add the train to the next train station in the other direction
                     nextStationToGarching.toGarching.add(train);
                 } else {
@@ -129,12 +129,12 @@ public class Station {
         // Done: Implement this method. It dispatched one train in direction Grosshadern.
         //  Remember that there might be no train waiting to be dispatched and that terminal station behave different.
         //  The train can only be dispatched if it is working, make sure to check for that by calling drive()
-        if (toGrosshadern.size() > 0) {
-            Train train = toGrosshadern.get(0);
+        if (this.toGrosshadern.size() > 0) {
+            Train train = this.toGrosshadern.get(0);
             boolean isWorking = train.drive();
             if (isWorking) {
-                toGrosshadern.remove(train);
-                if (!name.equals(TERMINAL_STATION2)) {
+                this.toGrosshadern.remove(train);
+                if (!this.name.equals(TERMINAL_STATION2)) {
 //                    add the train to the next train station in the other direction
                     nextStationToGrosshadern.toGrosshadern.add(train);
                 } else {
